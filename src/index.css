@@ -1,0 +1,192 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.app {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.frame {
+  font-size: 0;
+  position: relative;
+  touch-action: none;
+}
+
+#foreground {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 4px solid #444;
+  width: 100%;
+}
+
+.credit {
+  color: #444;
+  font-size: 0.8rem;
+}
+
+.credit b {
+  color: #234;
+  font-size: 1.1rem;
+}
+
+.credit a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.nav-button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+.nav-button:hover {
+  background-color: #111;
+}
+
+.score {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(0deg, #fff, #fff 30px, transparent);
+  text-align: right;
+}
+
+.score-inner {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+.stat {
+  display: inline-block;
+  padding: 0.75rem;
+}
+
+.stat label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.stat b {
+  display: block;
+  font-size: 1.6rem;
+  color: #111;
+  padding-top: 3px;
+  text-align: right;
+  line-height: 2rem;
+}
+
+.stat b button {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.stat b button:hover {
+  text-decoration-color: inherit;
+}
+
+.picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  padding: 2rem;
+  border: 1px solid #555;
+  border-radius: 3px;
+  background-color: #fff;
+  max-width: 640px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.modal h3 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.stats {
+  font-size: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #aaa;
+  border-collapse: collapse;
+}
+
+.stats tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.stats tr:last-child {
+  border-bottom: 1px solid #aaa;
+}
+
+.stats th {
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.stats td {
+  text-align: right;
+  padding: 0.5rem;
+}

@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "https://jew.ski/color-blind/static/css/main.132e2600.css",
-    "main.js": "https://jew.ski/color-blind/static/js/main.2b25051a.js",
+    "main.js": "https://jew.ski/color-blind/static/js/main.f76abd93.js",
     "index.html": "https://jew.ski/color-blind/index.html",
     "main.132e2600.css.map": "https://jew.ski/color-blind/static/css/main.132e2600.css.map",
-    "main.2b25051a.js.map": "https://jew.ski/color-blind/static/js/main.2b25051a.js.map"
+    "main.f76abd93.js.map": "https://jew.ski/color-blind/static/js/main.f76abd93.js.map"
   },
   "entrypoints": [
     "static/css/main.132e2600.css",
-    "static/js/main.2b25051a.js"
+    "static/js/main.f76abd93.js"
   ]
 }

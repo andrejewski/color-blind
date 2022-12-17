@@ -36,6 +36,7 @@ type Model = {
 
   finalUrl: string | undefined
   scoreExplainerOpen: boolean
+  score: string | undefined
 }
 
 type Msg =
@@ -341,6 +342,7 @@ export const appProgram = withSubscriptions<Msg, Model, React.ReactNode>({
       drawPointBuffer: [],
       lastDrawnAt: 0,
       scoreExplainerOpen: false,
+      score: undefined,
     },
   ],
   update(msg, model) {
@@ -508,20 +510,23 @@ export const appProgram = withSubscriptions<Msg, Model, React.ReactNode>({
           model.canvasViewSize.height
         )
 
+        const penaltyFactor = 5
+        const score = `${(
+          (100 * pixelsFilled - penaltyFactor * pixelsOverfilled) /
+          (pixelsFilled + pixelsUnderFilled)
+        ).toFixed(2)}%`
+        const seconds = Math.floor(gameLength / 1000)
+
         // draw game name and score on image
         {
           const nameText = 'Color Blind'
-          const padding = 10 * window.devicePixelRatio
-          const score =
-            (100 * pixelsFilled - pixelsOverfilled) /
-            (pixelsFilled + pixelsUnderFilled)
-          const seconds = Math.floor(gameLength / 1000)
-          const scoreText = `Colored ${score.toFixed(2)}% in ${seconds} seconds`
+          const scoreText = `Colored ${score} in ${seconds} seconds`
 
           offscreenCtx.fillStyle = '#000'
           offscreenCtx.font =
             "bold 24px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
           const nameSize = offscreenCtx.measureText(nameText)
+          const padding = 10 * window.devicePixelRatio
           offscreenCtx.fillText(
             nameText,
             padding,
@@ -546,6 +551,7 @@ export const appProgram = withSubscriptions<Msg, Model, React.ReactNode>({
           {
             ...model,
             page: 'game-over',
+            score,
             finalUrl,
             gameLength,
             pixelsFilled,
@@ -964,10 +970,7 @@ export const appProgram = withSubscriptions<Msg, Model, React.ReactNode>({
                           dispatch({ type: 'open_score_explainer' })
                         }}
                       >
-                        {(
-                          (100 * model.pixelsFilled - model.pixelsOverfilled) /
-                          (model.pixelsFilled + model.pixelsUnderFilled)
-                        ).toFixed(2) + '%'}
+                        {model.score}
                       </button>
                     </b>
                   </div>
@@ -996,8 +999,8 @@ export const appProgram = withSubscriptions<Msg, Model, React.ReactNode>({
                 <h3>Scoring</h3>
                 <p>
                   The "Colored" percentage is{' '}
-                  <b>pixels colored inside the lines</b> minus{' '}
-                  <b>pixels colored outside the lines</b> divided by the{' '}
+                  <b>pixels colored inside the lines</b> minus 5 times{' '}
+                  <b>the pixels colored outside the lines</b> divided by the{' '}
                   <b>shape area in pixels</b> that could have been colored.
                 </p>
                 <table className="stats">
